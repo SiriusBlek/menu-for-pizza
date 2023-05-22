@@ -1,0 +1,78 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(PizzaApp());
+}
+
+class PizzaApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Pizza App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MenuScreen(),
+    );
+  }
+}
+
+class MenuScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Menu'),
+      ),
+      body: ListView(
+        children: <Widget>[
+          MenuItem(
+            name: 'Margherita',
+            description: 'Classic cheese and tomato',
+            price: '\$9.99',
+          ),
+          MenuItem(
+            name: 'Pepperoni',
+            description: 'Pepperoni, cheese, and tomato',
+            price: '\$11.99',
+          ),
+          MenuItem(
+            name: 'Vegetarian',
+            description: 'Assorted vegetables, cheese, and tomato',
+            price: '\$10.99',
+          ),
+          // Добавьте остальные пункты меню сюда
+        ],
+      ),
+    );
+  }
+}
+
+class MenuItem extends StatelessWidget {
+  final String name;
+  final String description;
+  final String price;
+
+  const MenuItem({
+    Key? key,
+    required this.name,
+    required this.description,
+    required this.price,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        title: Text(name),
+        subtitle: Text(description),
+        trailing: Text(
+          price,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+}
